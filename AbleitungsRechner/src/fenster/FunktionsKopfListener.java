@@ -305,6 +305,7 @@ public abstract class FunktionsKopfListener implements ActionListener, KeyListen
 							Funktion r = m.remove(this.h.getMarkiert());
 							this.h.getAnker().ersetzen(m, r);
 							this.h.setMarkiert(r);
+
 						}
 					}
 				}, new FunktionsKopfListener(" - ", 3, 6, fenster) {
