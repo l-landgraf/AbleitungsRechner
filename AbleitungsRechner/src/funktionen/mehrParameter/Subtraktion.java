@@ -13,7 +13,7 @@
 // super(f);
 // }
 //
-// public Subtraktion(List<Funktion> f) {
+// public Subtraktio n(List<Funktion> f) {
 // super(f);
 // }
 //
