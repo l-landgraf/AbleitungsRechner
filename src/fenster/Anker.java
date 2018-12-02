@@ -24,18 +24,19 @@ public class Anker {
 		int y = h / 2;
 		g.setFont(HauptFenster.SCHRIFT);
 		Funktion.schreiben(this.name, X, y, g);
-		this.f.zeichen(g, X + (Funktion.länge(this.name) / 2) + (this.f.breite() / 2), y);
+		this.f.zeichnenKlammern(g, X + (Funktion.länge(this.name) / 2) + (this.f.breiteKlammern(null) / 2), y, null);
 	}
 	
 	public Funktion geklickt(int xKlick, int yKlick, int b, int h) {
 		int y = h / 2;
-		return this.f.geklickt(X + (Funktion.länge(this.name) / 2) + (this.f.breite() / 2), y,
-				xKlick, yKlick);
+		return this.f.geklickt(X + (Funktion.länge(this.name) / 2) + (this.f.breiteKlammern(null) / 2), y,
+				xKlick, yKlick, null);
 	}
 	
 	public void highlite(Funktion f, Graphics g, int b, int h) {
 		int y = h / 2;
-		this.f.highlite(f, g, X + (Funktion.länge(this.name) / 2) + (this.f.breite() / 2), y);
+		this.f.highlite(f, g, X + (Funktion.länge(this.name) / 2) + (this.f.breiteKlammern(null) / 2), y,
+				null);
 	}
 	
 	public void ersetzen(Funktion markiert, Funktion funktion) {
@@ -51,11 +52,11 @@ public class Anker {
 	}
 	
 	public int breite() {
-		return this.f.breite() + Funktion.länge(this.name);
+		return this.f.breiteKlammern(null) + Funktion.länge(this.name);
 	}
 	
 	public int höhe() {
-		return Math.max(this.f.höhe(), HauptFenster.SCHRIFT.getSize());
+		return Math.max(this.f.höheKlammern(null), HauptFenster.SCHRIFT.getSize());
 	}
 	
 	public Funktion parent(Funktion child) {

@@ -26,8 +26,8 @@ public abstract class KeinParameterFunktion extends Funktion {
 	}
 	
 	@Override
-	public void zeichen(Graphics g, int x, int y) {
-		debuggen(g, x, y);
+	public void zeichnen(Graphics g, int x, int y, Funktion parent) {
+		debuggen(g, x, y, parent);
 		schreiben(zeichen(), x, y, g);
 	}
 	
@@ -41,8 +41,8 @@ public abstract class KeinParameterFunktion extends Funktion {
 	}
 	
 	@Override
-	public Funktion geklickt(int x, int y, int xKlick, int yKlick) {
-		if (kollision(x, y, xKlick, yKlick)) {
+	public Funktion geklickt(int x, int y, int xKlick, int yKlick, Funktion parent) {
+		if (kollision(x, y, xKlick, yKlick, parent)) {
 			return this;
 		} else {
 			return null;
@@ -50,9 +50,9 @@ public abstract class KeinParameterFunktion extends Funktion {
 	}
 	
 	@Override
-	public void highlite(Funktion f, Graphics g, int x, int y) {
+	public void highlite(Funktion f, Graphics g, int x, int y, Funktion parent) {
 		if (f == this) {
-			umrandungZeichnen(g, x, y);
+			umrandungZeichnen(g, x, y, parent);
 			return;
 		}
 	}

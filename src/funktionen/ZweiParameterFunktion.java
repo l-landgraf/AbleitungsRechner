@@ -38,29 +38,29 @@ public abstract class ZweiParameterFunktion extends Funktion {
 	}
 	
 	@Override
-	public void zeichen(Graphics g, int x, int y) {
-		debuggen(g, x, y);
-		this.a.zeichen(g, xPosA(x), yPosA(y));
-		this.b.zeichen(g, xPosB(x), yPosB(y));
+	public void zeichnen(Graphics g, int x, int y, Funktion parent) {
+		debuggen(g, x, y, parent);
+		this.a.zeichnenKlammern(g, xPosA(x, parent), yPosA(y, parent), this);
+		this.b.zeichnenKlammern(g, xPosB(x, parent), yPosB(y, parent), this);
 	}
 	
-	protected abstract int xPosA(int x);
+	protected abstract int xPosA(int x, Funktion parent);
 	
-	protected abstract int yPosA(int y);
+	protected abstract int yPosA(int y, Funktion parent);
 	
-	protected abstract int xPosB(int x);
+	protected abstract int xPosB(int x, Funktion parent);
 	
-	protected abstract int yPosB(int y);
+	protected abstract int yPosB(int y, Funktion parent);
 	
 	@Override
-	public Funktion geklickt(int x, int y, int xKlick, int yKlick) {
-		Funktion o = this.a.geklickt(xPosA(x), yPosA(y), xKlick, yKlick);
-		Funktion s = this.b.geklickt(xPosB(x), yPosB(y), xKlick, yKlick);
+	public Funktion geklickt(int x, int y, int xKlick, int yKlick, Funktion parent) {
+		Funktion o = this.a.geklickt(xPosA(x, parent), yPosA(y, parent), xKlick, yKlick, this);
+		Funktion s = this.b.geklickt(xPosB(x, parent), yPosB(y, parent), xKlick, yKlick, this);
 		if (o != null) {
 			return o;
 		} else if (s != null) {
 			return s;
-		} else if (kollision(x, y, xKlick, yKlick)) {
+		} else if (kollision(x, y, xKlick, yKlick, parent)) {
 			return this;
 		} else {
 			return null;
@@ -68,14 +68,14 @@ public abstract class ZweiParameterFunktion extends Funktion {
 	}
 	
 	@Override
-	public void highlite(Funktion f, Graphics g, int x, int y) {
+	public void highlite(Funktion f, Graphics g, int x, int y, Funktion parent) {
 		if (f == this) {
-			umrandungZeichnen(g, x, y);
+			umrandungZeichnen(g, x, y, parent);
 			return;
 		}
 		
-		this.a.highlite(f, g, xPosA(x), yPosA(y));
-		this.b.highlite(f, g, xPosB(x), yPosB(y));
+		this.a.highlite(f, g, xPosA(x, parent), yPosA(y, parent), this);
+		this.b.highlite(f, g, xPosB(x, parent), yPosB(y, parent), this);
 	}
 	
 	@Override

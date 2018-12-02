@@ -85,8 +85,8 @@ public class GraphFenster extends JFrame {
 		
 		@Override
 		public Dimension getPreferredSize() {
-			return new Dimension(GraphFenster.this.anker.getF().breite() + ANZEIGE_BREITE,
-					GraphFenster.this.anker.getF().höhe() + ANZEIGE_HÖHE);
+			return new Dimension(GraphFenster.this.anker.getF().breiteKlammern(null) + ANZEIGE_BREITE,
+					GraphFenster.this.anker.getF().höheKlammern(null) + ANZEIGE_HÖHE);
 		}
 		
 		@Override
