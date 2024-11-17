@@ -1,2 +1,2 @@
 # AbeleitungsRechner
-besser als der windows rechner
+ein einfacher taschenrechner
